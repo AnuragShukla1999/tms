@@ -13,11 +13,17 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard.js';
 import { SignupDto } from './dto/signup.dto.js';
 
 
-@Controller('auth')
+// @Controller('auth')
+
+@Controller({
+  path: 'auth',
+  version: '1',
+})
+
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   @Post('login')
   login(@Body() dto: LoginDto) {
@@ -48,8 +54,14 @@ export class AuthController {
   }
 
 
-    @Post('signup')
+  @Post('signup')
   signup(@Body() dto: SignupDto) {
     return this.authService.signup(dto);
+  }
+
+
+  @Get('test')
+  test(@Req() req: any) {
+    return "fdgfsdgfdg";
   }
 }

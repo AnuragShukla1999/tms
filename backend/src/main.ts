@@ -101,8 +101,8 @@ async function bootstrap(): Promise<void> {
 
 
 function validateEnvironment(): void {
-  // const isProduction = process.env.NODE_ENV === 'production';
-  const isProduction = process.env.NODE_ENV === 'development';
+  const isProduction = process.env.NODE_ENV === 'production';
+  // const isProduction = process.env.NODE_ENV === 'development';
 
   console.log('process.env.NODE_ENV ===========> ', process.env.NODE_ENV);
   console.log('isProduction ===========> ', isProduction);

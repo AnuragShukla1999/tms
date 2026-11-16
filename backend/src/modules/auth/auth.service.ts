@@ -199,11 +199,14 @@ export class AuthService {
   }
 
   async signup(dto: SignupDto) {
+     console.log('1. Signup started');
     const email = dto.email.toLowerCase();
 
     const existing = await this.prisma.user.findFirst({
       where: { OR: [{ email }, { phone: dto.phone }] },
     });
+
+    console.log("existing ======> ", existing);
 
     if (existing) {
       throw new ConflictException('Email or phone number already registered');
